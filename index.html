@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"></script>
+
+    <style>
+        .employeeForm {
+            width: 70%;
+            margin: auto;
+            height: 100vh;
+            margin-top: 3rem;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        .warning{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="employeeForm">
+            <form method="post">
+                <div class="input-group inputs mb-3">
+                    <span class="input-group-text">First and last name</span>
+                    <input type="text" aria-label="First name" class="form-control" id="firstName" />
+                    <input type="text" aria-label="Last name" class="form-control" id="lastName" />
+                    <div id="nameHelp" class="form-text warning">
+                       
+                    </div>
+                </div>
+                <div class="inputs mb-3">
+                    <label for="inputPassword5" class="form-label">Password</label>
+                    <input type="password" id="inputPassword5" class="form-control"
+                        aria-describedby="passwordHelpBlock" />
+                    <div id="passwordHelpBlock" class="form-text warning">
+                       
+                    </div>
+                </div>
+                <div class="inputs mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-control"
+                        aria-describedby="passwordHelpBlock" />
+                    <div id="confirmpasswordHelpBlock" class="form-text warning"></div>
+                </div>
+                <div class="inputs">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        <div id="emailHelp" class="form-text">
+                            We'll never share your email with anyone else.
+                        </div>
+                    </div>
+                </div>
+                <div class="inputs">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Date Of Birth</span>
+                        <input type="date" aria-label="Date Of Birth" class="form-control" id="dob" />
+                        <div id="dobHelp" class="form-text">
+                           Current Age should be greater than 18 years old
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" name="Gender" id="Gender1" value="Male" />
+                            <label class="form-check-label" for="Gender1"> Male </label>
+                        </div>
+                        <div class="form-check mx-5">
+                            <input class="form-check-input" type="radio" name="Gender" id="Gender2" value="Female"
+                                checked />
+                            <label class="form-check-label" for="Gender2"> Female </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary" onclick="saveData()">Submit</button>
+                    <!-- <button type="button" class="btn btn-primary" onclick="ChangeNow()">Change</button>
+                    <button type="button" class="btn btn-primary" onclick="ResetNow()">Reset</button> -->
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function removeRequiredTerms()
+        {
+            $("#nameHelp").text("");
+            $("#passwordHelpBlock").text( "");
+            $("#confirmpasswordHelpBlock").text("");
+            $("#emailHelp").text("");
+            $("#dobHelp").text("");
+        }
+        function validateForm()
+        {
+            removeRequiredTerms();
+            var noerror = true;
+            if($("#firstName").val() == "" || $("#lastName").val() == "")
+            {
+$("#nameHelp").text("required");
+noerror = false;
+            }
+            if($("#inputPassword5").val() == "")
+            {
+                $("#passwordHelpBlock").text( "required");
+                noerror = false;
+            }
+            if($("#confirmPassword").val()== "")
+            {
+                $("#confirmpasswordHelpBlock").text("required")
+                noerror = false;
+            }
+            if($("#inputPassword5").val() !== $("#confirmPassword").val())
+            {
+                $("#confirmpasswordHelpBlock").text("Password mismatched");
+                noerror = false;
+            }
+if($("#exampleInputEmail1").val() == "")
+{
+    $("#emailHelp").text("required");
+    $("#emailHelp").addClass("warning");
+    noerror = false;
+}
+if($("#dob").val()== "")
+{
+    $("#dobHelp").text("required");
+    $("#dobHelp").addClass("warning");
+    noerror = false;
+}
+return noerror;
+        }
+        // function createPUTRequest(connToken, jsonObj, dbName, relName) {
+        //     var putRequest = "{\n"
+        //         + "\"token\" : \""
+        //         + connToken
+        //         + "\","
+        //         + "\"dbName\": \""
+        //         + dbName
+        //         + "\",\n" + "\"cmd\" : \"PUT\",\n"
+        //         + "\"rel\" : \""
+        //         + relName + "\","
+        //         + "\"jsonStr\": \n"
+        //         + jsonObj
+        //         + "\n"
+        //         + "}";
+        //     return putRequest;
+        // }
+        // function executeCommandAtGivenBaseUrl(reqString, dbBaseUrl, apiEndPointUrl) {
+        //     var url = dbBaseUrl + apiEndPointUrl;
+        //     var jsonObj;
+        //     $.post(url, reqString, function (result) {
+        //         jsonObj = JSON.parse(result);
+        //     }).fail(function (result) {
+        //         var dataJsonObj = result.responseText;
+        //         jsonObj = JSON.parse(dataJsonObj);
+        //     });
+        // }
+        function resetForm()
+        {
+            $("#firstName").val("");
+            $("#lastName").val("");
+            $("#inputPassword5").val("");
+            $("#confirmPassword").val("");
+            $("#dob").val("");
+            $("#exampleInputEmail1").val("");
+            var ele = document.getElementsByName("Gender");
+            ele[0].removeAttribute("checked")
+ele[1].setAttribute("checked","checked");
+        }
+        $("#firstName").focus();
+        function saveData() {
+            if (validateForm()) {
+                var firstName = $("#firstName").val();
+                var lastName = $("#lastName").val();
+                var password = $("#inputPassword5").val();
+                var emailId = $("#exampleInputEmail1").val();
+                var dob = $("#dob").val();
+                var gender;
+                var ele = document.getElementsByName("Gender")
+                ele.forEach((element) => {
+                    if (element.checked) {
+                        gender = element.value;
+                    }
+                })
+                var jsonStrObj = {
+                    Name: firstName + " " + lastName,
+                    Email:emailId,
+                    Password: password,
+                    dateOfBirth: dob,
+                    Gender: gender
+                }
+                var putRequest = createPUTRequest("90932449|-31949270577190091|90955362",JSON.stringify(jsonStrObj), "StudentDataBase", "Student-data");
+                alert("Do you want to Submit the form");
+                jQuery.ajaxSetup({ async: false });
+                executeCommandAtGivenBaseUrl(putRequest, "http://api.login2explore.com:5577", "/api/iml");
+                jQuery.ajaxSetup({ async: true });
+                resetForm();
+            }
+        }
+    </script>
+</body>
+
+</html>
