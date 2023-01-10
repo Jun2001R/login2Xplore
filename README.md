@@ -16,7 +16,7 @@ For updating data from database UPDATE command has been used.
 4. Multimode dataBase
 5. Easy to Use and handle
 ### Release History
- var updatedData=createUPDATERecordRequest("90932449|-31949270577190091|90955362",JSON.stringify(jsonStrObj),"STUDENT-TABLE",
+ ###### var updatedData=createUPDATERecordRequest("90932449|-31949270577190091|90955362",JSON.stringify(jsonStrObj),"STUDENT-TABLE",
                 "SCHOOL-DB", localStorage.getItem("rec_no") )
                 jQuery.ajaxSetup({ async: false });
                  var response = executeCommandAtGivenBaseUrl(
@@ -25,9 +25,8 @@ For updating data from database UPDATE command has been used.
                 "/api/iml"
             );
             jQuery.ajaxSetup({ async: true });
-      ###
             
-    var getRequest = createGET_BY_KEYRequest(
+   ###### var getRequest = createGET_BY_KEYRequest(
                 "90932449|-31949270577190091|90955362",
                 "STUDENT-TABLE",
                 "SCHOOL-DB",
@@ -43,8 +42,8 @@ For updating data from database UPDATE command has been used.
             );
             jQuery.ajaxSetup({ async: true });
             
-           ### 
-   var putRequest = createPUTRequest(
+        
+  ###### var putRequest = createPUTRequest(
                     "90932449|-31949270577190091|90955362",
                     JSON.stringify(jsonStrObj),
                     "STUDENT-TABLE",
