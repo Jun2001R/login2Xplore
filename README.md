@@ -1,10 +1,10 @@
 # Student Enrollment Form
 ### Input groups in the project
-1. Roll no. as Primary key \n
-2. First Name and Last Name \n
-3. Class \n
-4. Date of Birth \n
-5. Address \n
+1. Roll no. as Primary key
+2. First Name and Last Name 
+3. Class 
+4. Date of Birth 
+5. Address 
 6. Enrollment Date
 We took data from javaScript by elementId.val() (not used post method in form) and  made a request which can be send for database for write operation (PUT Command) and finally with the help of token, Data is saved in DataBase.
 Also for fetching the data from Database GET_BY_KEY command has been used.
@@ -25,6 +25,7 @@ For updating data from database UPDATE command has been used.
                 "/api/iml"
             );
             jQuery.ajaxSetup({ async: true });
+      ###
             
     var getRequest = createGET_BY_KEYRequest(
                 "90932449|-31949270577190091|90955362",
@@ -42,7 +43,7 @@ For updating data from database UPDATE command has been used.
             );
             jQuery.ajaxSetup({ async: true });
             
-            
+           ### 
    var putRequest = createPUTRequest(
                     "90932449|-31949270577190091|90955362",
                     JSON.stringify(jsonStrObj),
